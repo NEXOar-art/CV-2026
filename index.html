@@ -12,42 +12,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <style>
         body {
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #1a2526 100%);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
-            animation: gradientFlow 20s ease-in-out infinite;
-            background-size: 200% 200%;
-            transition: color 0.3s ease;
+            margin: 0;
         }
-        @keyframes gradientFlow {
-            0% { background-position: 0% 0%; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-        body::before {
-            content: '';
-            position: absolute;
+        canvas#gridCanvas {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(52, 152, 219, 0.2) 0%, transparent 70%);
             z-index: 0;
+            opacity: 0.2;
         }
         .twinkle {
             position: absolute;
             width: 2px;
             height: 2px;
-            background: rgba(52, 152, 219, 0.8);
+            background: #00ff88;
             border-radius: 50%;
             animation: twinkle 2s infinite ease-in-out;
         }
         @keyframes twinkle {
             0% { opacity: 0; }
-            50% { opacity: 0.8; }
+            50% { opacity: 0.9; }
             100% { opacity: 0; }
         }
         .section-hero {
@@ -58,16 +50,24 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            background-color: rgba(0, 0, 0, 0.3);
         }
         .parallax-bg {
             background-attachment: fixed;
             background-size: cover;
             background-position: center;
         }
-         .highlight-text {
-            background: linear-gradient(90deg, #3498db, #2980b9);
+        .highlight-text {
+            background: linear-gradient(90deg, #00ff88, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
         }
         .section {
             padding: 4rem 2rem;
@@ -81,6 +81,22 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .section h2 {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+        }
+        .section h2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: #00ff88;
+            border-radius: 2px;
+        }
         .timeline-item {
             position: relative;
             padding-left: 2.5rem;
@@ -93,7 +109,7 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background: #3498db;
+            background: #00ff88;
         }
         .timeline-item .dot {
             position: absolute;
@@ -101,20 +117,64 @@
             top: 0;
             width: 16px;
             height: 16px;
-            background: #3498db;
+            background: #00ff88;
             border-radius: 50%;
         }
         .card {
-            background: #1a2526;
+            background: #1c1c1c;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-left: 4px solid #00ff88;
             border-radius: 1rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 5px rgba(52, 152, 219, 0.2) inset;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 5px rgba(0, 255, 136, 0.2) inset;
             transform: perspective(500px) translateZ(0);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
             transform: perspective(500px) translateZ(10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 8px rgba(52, 152, 219, 0.3) inset;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 8px rgba(0, 255, 136, 0.4) inset;
+        }
+        .icon {
+            width: 24px;
+            height: 24px;
+            fill: #00ff88;
+            transition: transform 0.3s ease;
+        }
+        .icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+        .btn-3d {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            background: #00ff88;
+            color: #000000;
+            font-weight: 600;
+            text-transform: uppercase;
+            transform: perspective(500px) translateZ(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+        }
+        .btn-3d:hover {
+            transform: perspective(500px) translateZ(10px);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
+        }
+        .btn-3d::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .btn-3d:hover::after {
+            opacity: 1;
         }
         .whatsapp-btn {
             display: inline-flex;
@@ -122,16 +182,18 @@
             justify-content: center;
             padding: 0.75rem;
             border-radius: 50%;
-            background-color: #3498db;
+            background: #00ff88;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
         }
         .whatsapp-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
         }
         .whatsapp-logo {
-            width: 32px;
-            height: 32px;
+            width: 24px;
+            height: 24px;
+            fill: #000000;
         }
         @media (max-width: 768px) {
             .section-hero {
@@ -147,12 +209,61 @@
             .text-7xl {
                 font-size: 3.5rem;
             }
+            .section h2::before {
+                width: 60px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Twinkle Effect -->
+    <!-- Animated Grid Background -->
+    <canvas id="gridCanvas"></canvas>
     <script>
+        const canvas = document.getElementById('gridCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const gridSize = 50;
+        const lineColor = '#00ff88';
+        let offset = 0;
+
+        function drawGrid() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = lineColor;
+            ctx.lineWidth = 0.5;
+            ctx.globalAlpha = 0.2;
+
+            offset += 0.2;
+            if (offset >= gridSize) offset = 0;
+
+            for (let x = -offset; x < canvas.width; x += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            for (let y = -offset; y < canvas.height; y += gridSize) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+        }
+
+        function animateGrid() {
+            drawGrid();
+            requestAnimationFrame(animateGrid);
+        }
+
+        animateGrid();
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Twinkle Effect
         function createTwinkles(count) {
             for (let i = 0; i < count; i++) {
                 const twinkle = document.createElement('div');
@@ -165,46 +276,43 @@
         }
         createTwinkles(50);
 
-        // Dynamic text color adjustment based on background
+        // Dynamic text color adjustment
         function adjustTextColor() {
             const body = document.body;
-            const computeStyle = getComputedStyle(body);
-            const bgColor = computeStyle.backgroundColor;
-            const rgb = bgColor.match(/\d+/g).map(Number);
-            const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
-            if (brightness > 128) {
-                body.style.color = '#333333'; // Dark gray for bright backgrounds like blue
-                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
-                    el.style.color = '#444444'; // Adjust subtext colors
-                });
-            } else {
-                body.style.color = '#ffffff'; // White for dark backgrounds
-                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
-                    el.style.color = '#aaaaaa'; // Adjust subtext colors
-                });
-            }
+            body.style.color = '#ffffff';
+            document.querySelectorAll('.section h2').forEach(el => {
+                el.style.color = '#00ff88';
+            });
+            document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
+                el.style.color = '#cccccc';
+            });
+            document.querySelectorAll('.text-blue-400').forEach(el => {
+                el.style.color = '#00ff88';
+            });
         }
-        setInterval(adjustTextColor, 100); // Check every 100ms
-        adjustTextColor(); // Initial call
+        setInterval(adjustTextColor, 100);
+        adjustTextColor();
     </script>
 
     <!-- Hero Section -->
     <section class="section-hero parallax-bg">
         <div class="container mx-auto px-4 z-10 flex items-center gap-6">
-            <img src="FOTO NUEVA.png" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover">
+            <img src="FOTO NUEVA.png" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-2 border-[#00ff88]">
             <div>
                 <h1 class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
                 <p class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
                 <p class="text-lg text-gray-400 max-w-2xl">Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.</p>
                 <a href="https://api.whatsapp.com/send?phone=+543834689137&text=%C2%A1Hola%20....Quiero%20informaci%C3%B3n%20de%20tu%20Perfil%20Gast%C3%B3n!" target="_blank" class="mt-6 whatsapp-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" class="whatsapp-logo">
+                    <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
+                    </svg>
                 </a>
             </div>
         </div>
     </section>
 
     <!-- Resumen Laboral -->
-    <section id="resumen" class="section bg-gray-900">
+    <section id="resumen" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Resumen Laboral</h2>
             <div class="card">
@@ -216,40 +324,48 @@
     </section>
 
     <!-- Experiencia Laboral -->
-    <section id="experiencia" class="section bg-gray-800">
+    <section id="experiencia" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Experiencia Laboral</h2>
-            <div class="timeline-item">
-                <div class="dot"></div>
-                <h3 class="text-xl font-semibold text-white">Operador de Planta y Operador de Reactores - Cabot Argentina</h3>
-                <p class="text-gray-400">2000 - 2013</p>
-                <p class="text-gray-300">Optimización de procesos productivos, logrando un rendimiento del 92% en la producción de negro de humo mediante controles de calidad y operación eficiente en control distribuido DeltaV.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="dot"></div>
-                <h3 class="text-xl font-semibold text-white">Operador de Planta - Papelera del Plata (Softly)</h3>
-                <p class="text-gray-400">1999 - 2000</p>
-                <p class="text-gray-300">Gestión de líneas de producción, garantizando cumplimiento de normativas y estándares de seguridad.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="dot"></div>
-                <h3 class="text-xl font-semibold text-white">Operador - Cervecería y Maltería Quilmes</h3>
-                <p class="text-gray-400">1995 - 1998</p>
-                <p class="text-gray-300">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="timeline-item card">
+                    <div class="dot"></div>
+                    <h3 class="text-xl font-semibold text-white">Operador de Planta y Operador de Reactores - Cabot Argentina</h3>
+                    <p class="text-gray-400">2000 - 2013</p>
+                    <p class="text-gray-300">Optimización de procesos productivos, logrando un rendimiento del 92% en la producción de negro de humo mediante controles de calidad y operación eficiente en control distribuido DeltaV.</p>
+                </div>
+                <div class="timeline-item card">
+                    <div class="dot"></div>
+                    <h3 class="text-xl font-semibold text-white">Operador de Planta - Papelera del Plata (Softly)</h3>
+                    <p class="text-gray-400">1999 - 2000</p>
+                    <p class="text-gray-300">Gestión de líneas de producción, garantizando cumplimiento de normativas y estándares de seguridad.</p>
+                </div>
+                <div class="timeline-item card">
+                    <div class="dot"></div>
+                    <h3 class="text-xl font-semibold text-white">Operador - Cervecería y Maltería Quilmes</h3>
+                    <p class="text-gray-400">1995 - 1998</p>
+                    <p class="text-gray-300">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Educación -->
-    <section id="educacion" class="section bg-gray-900">
+    <section id="educacion" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Educación</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
+                    </svg>
                     <h3 class="text-xl font-semibold text-white">Lic. en Comercio Internacional</h3>
                     <p class="text-gray-400">Universidad de Luján | 2019 - 2022</p>
                 </div>
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
+                    </svg>
                     <h3 class="text-xl font-semibold text-white">Técnico Químico</h3>
                     <p class="text-gray-400">Técnica Luciano Reyes | 1989 - 1995</p>
                 </div>
@@ -258,32 +374,56 @@
     </section>
 
     <!-- Habilidades -->
-    <section id="habilidades" class="section bg-gray-800">
+    <section id="habilidades" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Habilidades</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
+                    </svg>
                     <p class="text-white">Paquete Office</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Python Básico</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Google Colab</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
+                    </svg>
                     <p class="text-white">Visual Studio Code</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Power BI</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Canva</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Foguista</p>
                 </div>
                 <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-white">Operador DeltaV EMERSON</p>
                 </div>
             </div>
@@ -291,17 +431,26 @@
     </section>
 
     <!-- Certificaciones -->
-    <section id="certificaciones" class="section bg-gray-900">
+    <section id="certificaciones" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Certificaciones</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
                 </div>
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
                 </div>
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
                 </div>
             </div>
@@ -309,14 +458,20 @@
     </section>
 
     <!-- Idiomas -->
-    <section id="idiomas" class="section bg-gray-800">
+    <section id="idiomas" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Idiomas</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-lg text-gray-300">Español: Nativo</p>
                 </div>
                 <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
                     <p class="text-lg text-gray-300">Inglés: Básico</p>
                 </div>
             </div>
@@ -324,14 +479,19 @@
     </section>
 
     <!-- Contacto -->
-    <section id="contact" class="section bg-gray-900">
+    <section id="contact" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Contacto</h2>
             <div class="card">
                 <p class="text-lg text-gray-300">Conecta conmigo para oportunidades laborales o colaboraciones:</p>
                 <p class="text-lg text-gray-400 mt-4">Email: gastonrobertogimenez@gmail.com</p>
                 <p class="text-lg text-gray-400 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/gastongimenez</a></p>
-                <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="mt-4 inline-block bg-blue-400 text-white font-semibold py-3 px-6 rounded-full hover:bg-blue-300 transition">Visitar Perfil de LinkedIn</a>
+                <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="mt-4 btn-3d">
+                    <svg class="icon mr-2" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
+                    </svg>
+                    Visitar Perfil de LinkedIn
+                </a>
             </div>
         </div>
     </section>
@@ -376,34 +536,28 @@
             });
         });
 
+        gsap.utils.toArray(".icon").forEach((icon) => {
+            gsap.to(icon, {
+                scrollTrigger: {
+                    trigger: icon,
+                    start: "top 90%",
+                    toggleActions: "play none none none",
+                },
+                scale: 1.1,
+                rotation: 5,
+                duration: 0.5,
+                ease: "power1.out",
+                yoyo: true,
+                repeat: 1
+            });
+        });
+
         // Parallax effect
         window.addEventListener("scroll", () => {
             const hero = document.querySelector(".section-hero");
             const scrollPosition = window.pageYOffset;
             hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
         });
-
-        // Dynamic text color adjustment based on background
-        function adjustTextColor() {
-            const body = document.body;
-            const computeStyle = getComputedStyle(body);
-            const bgColor = computeStyle.backgroundColor;
-            const rgb = bgColor.match(/\d+/g).map(Number);
-            const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
-            if (brightness > 128) {
-                body.style.color = '#333333'; // Dark gray for bright backgrounds like blue
-                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
-                    el.style.color = '#444444'; // Adjust subtext colors
-                });
-            } else {
-                body.style.color = '#ffffff'; // White for dark backgrounds
-                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
-                    el.style.color = '#aaaaaa'; // Adjust subtext colors
-                });
-            }
-        }
-        setInterval(adjustTextColor, 100); // Check every 100ms
-        adjustTextColor(); // Initial call
     </script>
 </body>
 </html>
