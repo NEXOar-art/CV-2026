@@ -190,15 +190,24 @@
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
         }
-        .whatsapp-logo {
+        .whatsapp-btn span {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #000000;
+            margin-left: 0.25rem;
+        }
+        .whatsapp-logo, .download-img {
             width: 24px;
             height: 24px;
-            fill: #000000;
         }
         @media (max-width: 768px) {
             .section-hero {
                 min-height: 80vh;
                 text-align: center;
+            }
+            .section-hero .flex {
+                flex-direction: column;
+                align-items: center;
             }
             .section {
                 padding: 2rem 1rem;
@@ -319,11 +328,16 @@
                 <h1 id="name" class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
                 <p id="title" class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
                 <p class="text-lg text-gray-400 max-w-2xl">Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.</p>
-                <a href="https://api.whatsapp.com/send?phone=+543834689137&text=%C2%A1Hola%20....Quiero%20informaci%C3%B3n%20de%20tu%20Perfil%20Gast%C3%B3n!" target="_blank" class="mt-6 whatsapp-btn">
-                    <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
-                    </svg>
-                </a>
+                <div class="flex items-center gap-4 mt-6">
+                    <a href="https://api.whatsapp.com/send?phone=+543834689137&text=%C2%A1Hola%20....Quiero%20informaci%C3%B3n%20de%20tu%20Perfil%20Gast%C3%B3n!" target="_blank" class="whatsapp-btn">
+                        <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
+                        </svg>
+                    </a>
+                    <a id="download-btn" href="https://drive.google.com/uc?export=download&id=1B1Ahs0a4LavUCOsx4Y0TRaIl-cb8dr84" download="CV-2025_Gaston_Gimenez.pdf" class="whatsapp-btn">
+                        <img src="https://img.icons8.com/?size=100&id=86388&format=png&color=000000" alt="Download Icon" class="download-img">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -360,8 +374,8 @@
                 <div class="timeline-item card">
                     <div class="dot"></div>
                     <h3 class="text-xl font-semibold text-white">Operador - Cervecería y Maltería Quilmes</h3>
-                    <p class="text-gray-400">2013 - 2022</p>
-                    <p class="text-gray-300">Operador de la Planta de Jarabes, sectorización de líneas de producción, seguimiento y control de procesos industriales automatizados.</p>
+                    <p class="text-gray-400">1995 - 1998</p>
+                    <p class="text-gray-300">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
                 </div>
             </div>
         </div>
@@ -374,17 +388,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-8.82zM12 3L1 9l11 6 11-6-11-6z"/>
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
                     <h3 class="text-xl font-semibold text-white">Lic. en Comercio Internacional</h3>
-                    <p class="text-gray-400">Universidad de Luján | 2023 - Presente</p>
+                    <p class="text-gray-400">Universidad de Luján | 2019 - 2022</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
                     <h3 class="text-xl font-semibold text-white">Técnico Químico</h3>
-                    <p class="text-gray-400">Técnica Argentina | 1989 - 1995</p>
+                    <p class="text-gray-400">Técnica Luciano Reyes | 1989 - 1995</p>
                 </div>
             </div>
         </div>
@@ -403,13 +417,13 @@
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Python Básico</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Google Colab</p>
                 </div>
@@ -421,25 +435,25 @@
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Power BI</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Canva</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Foguista</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Operador DeltaV EMERSON</p>
                 </div>
@@ -460,21 +474,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p class="text-lg text-white">Data Analyst | CoderHouse | 2023</p>
+                    <p class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p class="text-lg text-white">Data Science | CoderHouse | 2023 - Presente</p>
+                    <p class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p class="text-lg text-white">Visualización de Datos | Coursera | 2024</p>
+                    <p class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
                 </div>
             </div>
         </div>
@@ -487,35 +501,43 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p class="text-lg text-white">Español: Nativo</p>
+                    <p class="text-lg text-gray-300">Español: Nativo</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p class="text-lg text-white">Inglés: Básico</p>
+                    <p class="text-lg text-gray-300">Inglés: Básico</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contacto -->
-    <section id="contact" class="section bg-[#1c1c1c]">
+    <section id="contacto" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Contacto</h2>
             <div class="card">
-                <p class="text-lg text-white">Conecta conmigo para oportunidades laborales o colaboraciones:</p>
                 <p class="text-lg text-gray-400 mt-4">Email: gastonrobertogimenez@gmail.com</p>
                 <p class="text-lg text-gray-400 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/gastongimenez</a></p>
                 <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="mt-4 btn-3d">
                     <svg class="icon mr-2" viewBox="0 0 24 24">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
                     </svg>
                     Visitar Perfil de LinkedIn
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- Botón de Descarga PDF (Inferior) -->
+    <section id="download-section" class="section bg-[#1c1c1c] text-center">
+        <div class="container mx-auto px-4">
+            <a id="download-btn-footer" href="https://drive.google.com/file/d/1B1Ahs0a4LavUCOsx4Y0TRaIl-cb8dr84/view?usp=sharing" target="_blank" class="whatsapp-btn">
+                <span>PDF</span>
+            </a>
         </div>
     </section>
 
@@ -533,7 +555,7 @@
         // Animaciones con GSAP y ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
 
-        // Animación de entrada para el nombre y título
+        // Animación de entrada para el nombre, título y botón de descarga (hero)
         const tl = gsap.timeline({ delay: 0.5 });
         tl.from("#name", {
             x: -100,
@@ -546,7 +568,26 @@
             opacity: 0,
             duration: 1.5,
             ease: "power2.out"
-        }, "-=0.3");
+        }, "-=0.3")
+        .from("#download-btn", {
+            scale: 0,
+            opacity: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.3)"
+        }, "-=0.2");
+
+        // Animación para el botón de descarga inferior
+        gsap.from("#download-btn-footer", {
+            scrollTrigger: {
+                trigger: "#download-section",
+                start: "top 80%",
+                toggleActions: "play none none none",
+            },
+            scale: 0,
+            opacity: 0,
+            duration: 0.8,
+            ease: "elastic.out(1, 0.3)"
+        });
 
         gsap.utils.toArray(".section").forEach((section) => {
             gsap.to(section, {
@@ -599,3 +640,4 @@
     </script>
 </body>
 </html>
+"commit"
