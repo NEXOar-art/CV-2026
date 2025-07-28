@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Currículum Vitae de Gastón Roberto Giménez - Operador de Planta">
-    <meta name="keywords" content="Gastón Giménez, operador de planta, operador de reactores, Power BI, producción industrial">
+    <meta name="keywords" content="Gastón Giménez, operador de planta, operador de reactores, Power BI, producción industrial, diseño web responsivo">
     <meta name="author" content="Gastón Roberto Giménez">
     <title>Gastón Roberto Giménez - CV</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -50,7 +50,7 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
-            background: linear-gradient(to bottom, #000000 0%, #ffffff 100%);
+            background: linear-gradient(to bottom, #1e3a8a 0%, #000000 100%);
             background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-attachment: fixed;
             background-size: cover;
@@ -64,7 +64,7 @@
             background-position: center;
         }
         .highlight-text {
-            background: linear-gradient(90deg, #00ff88, #ffffff);
+            background: linear-gradient(90deg, #60a5fa, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
@@ -278,17 +278,34 @@
 
         // Dynamic text color adjustment
         function adjustTextColor() {
-            const body = document.body;
-            body.style.color = '#ffffff';
-            document.querySelectorAll('.section h2').forEach(el => {
-                el.style.color = '#00ff88';
-            });
-            document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
-                el.style.color = '#cccccc';
-            });
-            document.querySelectorAll('.text-blue-400').forEach(el => {
-                el.style.color = '#00ff88';
-            });
+            const hero = document.querySelector('.section-hero');
+            const computeStyle = getComputedStyle(hero || document.body);
+            const bgColor = computeStyle.backgroundColor;
+            const rgb = bgColor.match(/\d+/g)?.map(Number) || [30, 58, 138];
+            const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+            if (brightness > 128) {
+                document.body.style.color = '#000000';
+                document.querySelectorAll('.section h2').forEach(el => {
+                    el.style.color = '#00ff88';
+                });
+                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
+                    el.style.color = '#333333';
+                });
+                document.querySelectorAll('.text-blue-400').forEach(el => {
+                    el.style.color = '#00ff88';
+                });
+            } else {
+                document.body.style.color = '#ffffff';
+                document.querySelectorAll('.section h2').forEach(el => {
+                    el.style.color = '#00ff88';
+                });
+                document.querySelectorAll('.text-gray-300, .text-gray-400').forEach(el => {
+                    el.style.color = '#cccccc';
+                });
+                document.querySelectorAll('.text-blue-400').forEach(el => {
+                    el.style.color = '#00ff88';
+                });
+            }
         }
         setInterval(adjustTextColor, 100);
         adjustTextColor();
@@ -299,8 +316,8 @@
         <div class="container mx-auto px-4 z-10 flex items-center gap-6">
             <img src="FOTO NUEVA.png" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-2 border-[#00ff88]">
             <div>
-                <h1 class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
-                <p class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
+                <h1 id="name" class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
+                <p id="title" class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
                 <p class="text-lg text-gray-400 max-w-2xl">Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.</p>
                 <a href="https://api.whatsapp.com/send?phone=+543834689137&text=%C2%A1Hola%20....Quiero%20informaci%C3%B3n%20de%20tu%20Perfil%20Gast%C3%B3n!" target="_blank" class="mt-6 whatsapp-btn">
                     <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
@@ -343,8 +360,8 @@
                 <div class="timeline-item card">
                     <div class="dot"></div>
                     <h3 class="text-xl font-semibold text-white">Operador - Cervecería y Maltería Quilmes</h3>
-                    <p class="text-gray-400">1995 - 1998</p>
-                    <p class="text-gray-300">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
+                    <p class="text-gray-400">2013 - 2022</p>
+                    <p class="text-gray-300">Operador de la Planta de Jarabes, sectorización de líneas de producción, seguimiento y control de procesos industriales automatizados.</p>
                 </div>
             </div>
         </div>
@@ -357,17 +374,17 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
+                        <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-8.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
                     <h3 class="text-xl font-semibold text-white">Lic. en Comercio Internacional</h3>
-                    <p class="text-gray-400">Universidad de Luján | 2019 - 2022</p>
+                    <p class="text-gray-400">Universidad de Luján | 2023 - Presente</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
                     <h3 class="text-xl font-semibold text-white">Técnico Químico</h3>
-                    <p class="text-gray-400">Técnica Luciano Reyes | 1989 - 1995</p>
+                    <p class="text-gray-400">Técnica Argentina | 1989 - 1995</p>
                 </div>
             </div>
         </div>
@@ -386,13 +403,13 @@
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Python Básico</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Google Colab</p>
                 </div>
@@ -404,27 +421,33 @@
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Power BI</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Canva</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Foguista</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
                     <p class="text-white">Operador DeltaV EMERSON</p>
+                </div>
+                <div class="card text-center">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
+                    </svg>
+                    <p class="text-white">Diseño Web Responsivo</p>
                 </div>
             </div>
         </div>
@@ -437,21 +460,21 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
-                    <p class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
+                    <p class="text-lg text-white">Data Analyst | CoderHouse | 2023</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
-                    <p class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
+                    <p class="text-lg text-white">Data Science | CoderHouse | 2023 - Presente</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
-                    <p class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
+                    <p class="text-lg text-white">Visualización de Datos | Coursera | 2024</p>
                 </div>
             </div>
         </div>
@@ -464,15 +487,15 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
-                    <p class="text-lg text-gray-300">Español: Nativo</p>
+                    <p class="text-lg text-white">Español: Nativo</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2z"/>
                     </svg>
-                    <p class="text-lg text-gray-300">Inglés: Básico</p>
+                    <p class="text-lg text-white">Inglés: Básico</p>
                 </div>
             </div>
         </div>
@@ -483,12 +506,12 @@
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold text-blue-400 mb-6">Contacto</h2>
             <div class="card">
-                <p class="text-lg text-gray-300">Conecta conmigo para oportunidades laborales o colaboraciones:</p>
+                <p class="text-lg text-white">Conecta conmigo para oportunidades laborales o colaboraciones:</p>
                 <p class="text-lg text-gray-400 mt-4">Email: gastonrobertogimenez@gmail.com</p>
                 <p class="text-lg text-gray-400 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/gastongimenez</a></p>
                 <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="mt-4 btn-3d">
                     <svg class="icon mr-2" viewBox="0 0 24 24">
-                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9-2 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
                     </svg>
                     Visitar Perfil de LinkedIn
                 </a>
@@ -509,6 +532,21 @@
     <script>
         // Animaciones con GSAP y ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
+
+        // Animación de entrada para el nombre y título
+        const tl = gsap.timeline({ delay: 0.5 });
+        tl.from("#name", {
+            x: -100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power2.out"
+        })
+        .from("#title", {
+            x: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power2.out"
+        }, "-=0.3");
 
         gsap.utils.toArray(".section").forEach((section) => {
             gsap.to(section, {
