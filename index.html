@@ -185,12 +185,33 @@
             background: #00ff88;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+            position: relative;
         }
         .whatsapp-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(0, 255, 136, 0.6);
         }
-        .whatsapp-btn span {
+        .whatsapp-btn span.whatsapp-tooltip {
+            position: absolute;
+            left: calc(100% + 0.5rem);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        .whatsapp-btn:hover span.whatsapp-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        .whatsapp-btn span:not(.whatsapp-tooltip) {
             font-size: 0.75rem;
             font-weight: bold;
             color: #000000;
@@ -220,6 +241,10 @@
             }
             .section h2::before {
                 width: 60px;
+            }
+            .whatsapp-btn span.whatsapp-tooltip {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.4rem;
             }
         }
     </style>
@@ -333,9 +358,11 @@
                         <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
                         </svg>
+                        <span class="whatsapp-tooltip">Escríbeme al WhatsApp</span>
                     </a>
                     <a id="download-btn" href="https://drive.google.com/uc?export=download&id=1B1Ahs0a4LavUCOsx4Y0TRaIl-cb8dr84" download="CV-2025_Gaston_Gimenez.pdf" class="whatsapp-btn">
                         <img src="https://img.icons8.com/?size=100&id=86388&format=png&color=000000" alt="Download Icon" class="download-img">
+                        <span class="whatsapp-tooltip">Descargar CV</span>
                     </a>
                 </div>
             </div>
@@ -452,7 +479,7 @@
                     <p class="text-white">Foguista</p>
                 </div>
                 <div class="card text-center">
-                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                    <svg class="icon mb-2" viewBox="0 0 24 22">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-white">Operador DeltaV EMERSON</p>
@@ -477,18 +504,36 @@
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
+                    <a href="https://drive.google.com/file/d/1l6vE-dfvottpnd0VTNnJAY9IfpdSnPJg/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
+                    </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
+                    <a href="https://drive.google.com/file/d/1vkYyO_uz4rypz--DoCgxPrz-zR-KCggj/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
+                    </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
                     <p class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
+                    <a href="https://drive.google.com/file/d/1yd1DbOuXUKI1yLXvl0C5EqaHusQRggny/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -537,6 +582,7 @@
         <div class="container mx-auto px-4">
             <a id="download-btn-footer" href="https://drive.google.com/file/d/1B1Ahs0a4LavUCOsx4Y0TRaIl-cb8dr84/view?usp=sharing" target="_blank" class="whatsapp-btn">
                 <span>PDF</span>
+                <span class="whatsapp-tooltip">Baja el CV</span>
             </a>
         </div>
     </section>
