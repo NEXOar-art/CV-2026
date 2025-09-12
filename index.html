@@ -148,7 +148,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             background: #00ff88;
             color: #000000;
@@ -157,6 +157,7 @@
             transform: perspective(500px) translateZ(0);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
+            font-size: 0.875rem;
         }
         .btn-3d:hover {
             transform: perspective(500px) translateZ(10px);
@@ -245,6 +246,10 @@
             .whatsapp-btn span.whatsapp-tooltip {
                 font-size: 0.65rem;
                 padding: 0.2rem 0.4rem;
+            }
+            .btn-3d {
+                font-size: 0.75rem;
+                padding: 0.5rem 0.75rem;
             }
         }
     </style>
@@ -488,7 +493,21 @@
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
                     </svg>
-                    <p class="text-white">Diseño Web Responsivo</p>
+                    <p class="text-white">Vibe Coding</p>
+                    <div class="flex justify-center gap-2 mt-4 flex-wrap">
+                        <a href="https://nexoar-art.github.io/ROTISERIA-MALVINAS/" target="_blank" class="btn-3d">
+                            <svg class="icon mr-1" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            </svg>
+                            Rotisería
+                        </a>
+                        <a href="https://ai.studio/apps/drive/1UsOLdbpYY956clHjic9-OH0qkh-jZfMY" target="_blank" class="btn-3d">
+                            <svg class="icon mr-1" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                            </svg>
+                            AI Studio
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -699,3 +718,4 @@
 </body>
 </html>
 "commit"
+
