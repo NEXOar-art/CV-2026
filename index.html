@@ -158,6 +158,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
             font-size: 0.875rem;
+            text-align: center;
+            width: 100%; /* Ensure uniform width */
+            margin: 0.25rem 0;
         }
         .btn-3d:hover {
             transform: perspective(500px) translateZ(10px);
@@ -222,6 +225,48 @@
             width: 24px;
             height: 24px;
         }
+        /* Dropdown styles for Vibe Coding card */
+        .dropdown-container {
+            position: relative;
+            margin-top: 1rem;
+        }
+        .dropdown-toggle {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            background: #00ff88;
+            color: #000000;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+        .dropdown-toggle:hover {
+            background: #00cc70;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1c1c1c;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            z-index: 10;
+            min-width: 150px; /* Increased min-width for better structure */
+            flex-direction: column;
+        }
+        .dropdown-menu.active {
+            display: flex;
+        }
+        .dropdown-menu .btn-3d {
+            justify-content: center;
+        }
         @media (max-width: 768px) {
             .section-hero {
                 min-height: 80vh;
@@ -250,6 +295,10 @@
             .btn-3d {
                 font-size: 0.75rem;
                 padding: 0.5rem 0.75rem;
+                width: 90px; /* Adjusted for smaller screens */
+            }
+            .dropdown-menu {
+                min-width: 120px;
             }
         }
     </style>
@@ -494,19 +543,22 @@
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
                     </svg>
                     <p class="text-white">Vibe Coding</p>
-                    <div class="flex justify-center gap-2 mt-4 flex-wrap">
-                        <a href="https://nexoar-art.github.io/ROTISERIA-MALVINAS/" target="_blank" class="btn-3d">
-                            <svg class="icon mr-1" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                            </svg>
-                            Rotisería
-                        </a>
-                        <a href="https://ai.studio/apps/drive/1UsOLdbpYY956clHjic9-OH0qkh-jZfMY" target="_blank" class="btn-3d">
-                            <svg class="icon mr-1" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-                            </svg>
-                            AI Studio
-                        </a>
+                    <div class="dropdown-container">
+                        <div class="dropdown-toggle">Proyectos</div>
+                        <div class="dropdown-menu">
+                            <a href="https://nexoar-art.github.io/ROTISERIA-MALVINAS/" target="_blank" class="btn-3d flex items-center justify-center">
+                                <svg class="icon mr-1" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                </svg>
+                                <span class="text-center w-full">Rotisería</span>
+                            </a>
+                            <a href="https://ai.studio/apps/drive/1UsOLdbpYY956clHjic9-OH0qkh-jZfMY" target="_blank" class="btn-3d flex items-center justify-center">
+                                <svg class="icon mr-1" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                                </svg>
+                                <span class="text-center w-full">AI Studio</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -714,8 +766,27 @@
             const scrollPosition = window.pageYOffset;
             hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
         });
+
+        // Dropdown toggle functionality
+        document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const menu = toggle.nextElementSibling;
+                menu.classList.toggle('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdowns = document.querySelectorAll('.dropdown-menu');
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.parentElement.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
     </script>
 </body>
 </html>
 "commit"
+
 
