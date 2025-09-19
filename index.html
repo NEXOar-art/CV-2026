@@ -7,6 +7,14 @@
     <meta name="keywords" content="Gastón Giménez, operador de planta, operador de reactores, Power BI, producción industrial, diseño web responsivo">
     <meta name="author" content="Gastón Roberto Giménez">
     <title>Gastón Roberto Giménez - CV</title>
+    <script>
+        // Suppress Tailwind CDN warning
+        const originalWarn = console.warn;
+        console.warn = (...args) => {
+            if (args[0].includes('cdn.tailwindcss.com should not be used in production')) return;
+            originalWarn(...args);
+        };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -159,8 +167,7 @@
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
             font-size: 0.875rem;
             text-align: center;
-            width: 100%; /* Ensure uniform width */
-            margin: 0.25rem 0;
+            width: 100px; /* Fixed width to ensure buttons align well */
         }
         .btn-3d:hover {
             transform: perspective(500px) translateZ(10px);
@@ -618,6 +625,18 @@
                         <span class="whatsapp-tooltip">Evaluación de Perfil Laboral</span>
                     </a>
                 </div>
+                <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                    <p class="text-lg text-gray-300">Flujos y herramientas de trabajo con IA</p>
+                    <a href="https://drive.google.com/file/d/1LfJC9cLFws3vUiFAO6a6p6UbRXWzCW0v/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -788,6 +807,7 @@
 </body>
 </html>
 "commit"
+
 
 
 
