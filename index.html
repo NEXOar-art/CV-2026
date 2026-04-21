@@ -232,6 +232,47 @@
             width: 24px;
             height: 24px;
         }
+        /* LinkedIn button styles */
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 50%;
+            background: #0077b5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 119, 181, 0.4);
+            position: relative;
+        }
+        .linkedin-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 119, 181, 0.6);
+        }
+        .linkedin-btn span.linkedin-tooltip {
+            position: absolute;
+            left: calc(100% + 0.5rem);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            pointer-events: none;
+        }
+        .linkedin-btn:hover span.linkedin-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+        .linkedin-logo {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
         /* Dropdown styles for Vibe Coding card */
         .dropdown-container {
             position: relative;
@@ -295,7 +336,8 @@
             .section h2::before {
                 width: 60px;
             }
-            .whatsapp-btn span.whatsapp-tooltip {
+            .whatsapp-btn span.whatsapp-tooltip,
+            .linkedin-btn span.linkedin-tooltip {
                 font-size: 0.65rem;
                 padding: 0.2rem 0.4rem;
             }
@@ -420,6 +462,12 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
                         </svg>
                         <span class="whatsapp-tooltip">Escríbeme al WhatsApp</span>
+                    </a>
+                    <a href="https://www.linkedin.com/messaging/thread/2-MmY0OTIzOGEtYzQzYS00YmQ3LTkzMTMtMDQzZDdkMzM4YzIxXzAxMw==/" target="_blank" class="linkedin-btn">
+                        <svg class="linkedin-logo" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        <span class="linkedin-tooltip">Contáctame por LinkedIn</span>
                     </a>
                     <a id="download-btn" href="https://drive.google.com/file/d/1XOoSzN1lsqVqLIv93Fy3FjpJF9XQVuJn/view?usp=sharing" target="_blank" class="whatsapp-btn">
                         <img src="https://img.icons8.com/?size=100&id=86388&format=png&color=000000" alt="Download Icon" class="download-img">
@@ -818,7 +866,7 @@
     </script>
 </body>
 </html>
-"Commit"
+
 
 
 
