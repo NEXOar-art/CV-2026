@@ -167,7 +167,7 @@
             box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4);
             font-size: 0.875rem;
             text-align: center;
-            width: 100px;
+            width: 100px; /* Fixed width to ensure buttons align well */
         }
         .btn-3d:hover {
             transform: perspective(500px) translateZ(10px);
@@ -306,7 +306,7 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             padding: 0.5rem;
             z-index: 10;
-            min-width: 150px;
+            min-width: 150px; /* Increased min-width for better structure */
             flex-direction: column;
         }
         .dropdown-menu.active {
@@ -314,60 +314,6 @@
         }
         .dropdown-menu .btn-3d {
             justify-content: center;
-        }
-        
-        /* ===== LANGUAGE TOGGLE STYLES ===== */
-        .lang-toggle {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(28, 28, 28, 0.9);
-            border: 1px solid rgba(0, 255, 136, 0.5);
-            border-radius: 2rem;
-            padding: 0.25rem;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 136, 0.2);
-            transition: all 0.3s ease;
-        }
-        .lang-toggle:hover {
-            border-color: #00ff88;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 255, 136, 0.4);
-            transform: translateY(-2px);
-        }
-        .lang-btn {
-            padding: 0.4rem 0.9rem;
-            border-radius: 1.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: transparent;
-            color: #888;
-            border: none;
-            position: relative;
-        }
-        .lang-btn.active {
-            background: #00ff88;
-            color: #000;
-            box-shadow: 0 2px 10px rgba(0, 255, 136, 0.4);
-        }
-        .lang-btn:not(.active):hover {
-            color: #00ff88;
-        }
-        .lang-icon {
-            width: 18px;
-            height: 18px;
-            fill: #00ff88;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.95); }
         }
         @media (max-width: 768px) {
             .section-hero {
@@ -398,33 +344,15 @@
             .btn-3d {
                 font-size: 0.75rem;
                 padding: 0.5rem 0.75rem;
-                width: 90px;
+                width: 90px; /* Adjusted for smaller screens */
             }
             .dropdown-menu {
                 min-width: 120px;
-            }
-            .lang-toggle {
-                top: 1rem;
-                right: 1rem;
-                padding: 0.2rem;
-            }
-            .lang-btn {
-                padding: 0.3rem 0.7rem;
-                font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Language Toggle Button -->
-    <div class="lang-toggle" role="navigation" aria-label="Language selector">
-        <svg class="lang-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-        </svg>
-        <button class="lang-btn active" data-lang="es" aria-pressed="true">ES</button>
-        <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
-    </div>
-
     <!-- Animated Grid Background -->
     <canvas id="gridCanvas"></canvas>
     <script>
@@ -525,25 +453,25 @@
         <div class="container mx-auto px-4 z-10 flex items-center gap-6">
             <img src="FOTO NUEVA.png" alt="Profile Picture" class="w-24 h-24 rounded-full object-cover border-2 border-[#00ff88]">
             <div>
-                <h1 id="name" data-i18n="name" class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
-                <p id="title" data-i18n="title" class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
-                <p data-i18n="heroDesc" class="text-lg text-gray-400 max-w-2xl">Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.</p>
+                <h1 id="name" class="text-5xl md:text-7xl font-bold highlight-text mb-4">Gastón Roberto Giménez</h1>
+                <p id="title" class="text-2xl md:text-3xl text-gray-300 mb-6">Operador de Planta</p>
+                <p class="text-lg text-gray-400 max-w-2xl">Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.</p>
                 <div class="flex items-center gap-4 mt-6">
                     <a href="https://api.whatsapp.com/send?phone=+543489686939&text=Quiero%20saber%20mas%20de%20tu%20perfil!!!%20">
                         <svg class="whatsapp-logo icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12c0 1.88.52 3.64 1.43 5.17L2 22l4.83-1.43C8.36 21.48 10.12 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm3.79 15.57c-.45.67-1.32 1.05-2.18 1.05-1.02 0-1.98-.43-2.7-1.19-.72-.76-1.29-1.73-1.67-2.83-.38-1.1-.58-2.27-.58-3.45 0-1.18.2-2.35.58-3.45.38-1.1.95-2.07 1.67-2.83.72-.76 1.68-1.19 2.7-1.19.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4-.45.67-1.32 1.05-2.18 1.05-.86 0-1.73-.38-2.18-1.05-.45-.67-.67-1.54-.67-2.4 0-.86.22-1.73.67-2.4.45-.67 1.32-1.05 2.18-1.05.86 0 1.73.38 2.18 1.05.45.67.67 1.54.67 2.4 0 .86-.22 1.73-.67 2.4z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="whatsappTooltip">Escríbeme al WhatsApp</span>
+                        <span class="whatsapp-tooltip">Escríbeme al WhatsApp</span>
                     </a>
                     <a href="https://www.linkedin.com/messaging/thread/2-MmY0OTIzOGEtYzQzYS00YmQ3LTkzMTMtMDQzZDdkMzM4YzIxXzAxMw==/" target="_blank" class="linkedin-btn">
                         <svg class="linkedin-logo" viewBox="0 0 24 24">
                             <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
                         </svg>
-                        <span class="linkedin-tooltip" data-i18n-tooltip="linkedinTooltip">Contáctame por LinkedIn</span>
+                        <span class="linkedin-tooltip">Contáctame por LinkedIn</span>
                     </a>
                     <a id="download-btn" href="https://drive.google.com/file/d/1XOoSzN1lsqVqLIv93Fy3FjpJF9XQVuJn/view?usp=sharing" target="_blank" class="whatsapp-btn">
                         <img src="https://img.icons8.com/?size=100&id=86388&format=png&color=000000" alt="Download Icon" class="download-img">
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="downloadTooltip">Descargar CV</span>
+                        <span class="whatsapp-tooltip">Descargar CV</span>
                     </a>
                 </div>
             </div>
@@ -553,9 +481,9 @@
     <!-- Resumen Laboral -->
     <section id="resumen" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="resumenTitle" class="text-4xl font-bold text-blue-400 mb-6">Resumen Laboral</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Resumen Laboral</h2>
             <div class="card">
-                <p data-i18n="resumenText" class="text-lg text-gray-300 leading-relaxed">
+                <p class="text-lg text-gray-300 leading-relaxed">
                     Más de 15 años de experiencia en producción industrial, trabajando en empresas líderes como Cervecería y Maltería Quilmes, Papelera del Plata (Softly) y Cabot Argentina. En Cabot, como Operador de Planta y Reactores, logré un rendimiento del 98% en la producción de negro de humo mediante controles de calidad y operación eficiente en sistemas DeltaV. Mi enfoque en la productividad, resolución de problemas y adaptabilidad me permite destacar en entornos de alta exigencia.
                 </p>
             </div>
@@ -565,31 +493,31 @@
     <!-- Experiencia Laboral -->
     <section id="experiencia" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="experienciaTitle" class="text-4xl font-bold text-blue-400 mb-6">Experiencia Laboral</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Experiencia Laboral</h2>
             <div class="grid grid-cols-1 gap-4">
                 <div class="timeline-item card">
                     <div class="dot"></div>
-                    <h3 data-i18n="job1Title" class="text-2xl font-bold text-white">KM 74 AUTO SPA - Encargado</h3>
+                    <h3 class="text-2xl font-bold text-white">KM 74 AUTO SPA - Encargado</h3>
                     <p class="text-gray-400 text-base">2014 - 2021</p>
-                    <p data-i18n="job1Desc" class="text-gray-300 text-base">Mantenimiento general (Automotor) - LAVADO, DESINFECCIÓN, ASPIRADO, PULIDO, DETAILING. CLIENTES: (TOYOTA TSUSHO CORPORATION, ASPEN FORD MOTORS, PETROMINIG, PÚBLICO EN GENERAL).</p>
+                    <p class="text-gray-300 text-base">Mantenimiento general (Automotor) - LAVADO, DESINFECCIÓN, ASPIRADO, PULIDO, DETAILING. CLIENTES: (TOYOTA TSUSHO CORPORATION, ASPEN FORD MOTORS, PETROMINIG, PÚBLICO EN GENERAL).</p>
                 </div>
                 <div class="timeline-item card">
                     <div class="dot"></div>
-                    <h3 data-i18n="job2Title" class="text-2xl font-bold text-white">Operador de Planta y Operador de Reactores - Cabot Argentina</h3>
+                    <h3 class="text-2xl font-bold text-white">Operador de Planta y Operador de Reactores - Cabot Argentina</h3>
                     <p class="text-gray-400 text-base">2000 - 2013</p>
-                    <p data-i18n="job2Desc" class="text-gray-300 text-base">Optimización de procesos productivos, logrando un rendimiento del 92% en la producción de negro de humo mediante controles de calidad y operación eficiente en control distribuido DeltaV.</p>
+                    <p class="text-gray-300 text-base">Optimización de procesos productivos, logrando un rendimiento del 92% en la producción de negro de humo mediante controles de calidad y operación eficiente en control distribuido DeltaV.</p>
                 </div>
                 <div class="timeline-item card">
                     <div class="dot"></div>
-                    <h3 data-i18n="job3Title" class="text-2xl font-bold text-white">Operador de Planta - Papelera del Plata (Softly)</h3>
+                    <h3 class="text-2xl font-bold text-white">Operador de Planta - Papelera del Plata (Softly)</h3>
                     <p class="text-gray-400 text-base">1999 - 2000</p>
-                    <p data-i18n="job3Desc" class="text-gray-300 text-base">Gestión de líneas de producción, garantizando cumplimiento de normativas y estándares de seguridad.</p>
+                    <p class="text-gray-300 text-base">Gestión de líneas de producción, garantizando cumplimiento de normativas y estándares de seguridad.</p>
                 </div>
                 <div class="timeline-item card">
                     <div class="dot"></div>
-                    <h3 data-i18n="job4Title" class="text-2xl font-bold text-white">Operador - Cervecería y Maltería Quilmes</h3>
+                    <h3 class="text-2xl font-bold text-white">Operador - Cervecería y Maltería Quilmes</h3>
                     <p class="text-gray-400 text-base">1995 - 1998</p>
-                    <p data-i18n="job4Desc" class="text-gray-300 text-base">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
+                    <p class="text-gray-300 text-base">Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.</p>
                 </div>
             </div>
         </div>
@@ -598,21 +526,21 @@
     <!-- Educación -->
     <section id="educacion" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="educacionTitle" class="text-4xl font-bold text-blue-400 mb-6">Educación</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Educación</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
-                    <h3 data-i18n="edu1Title" class="text-xl font-semibold text-white">Lic. en Comercio Internacional</h3>
-                    <p data-i18n="edu1Desc" class="text-gray-400">Universidad de Luján | 2019 - 2022</p>
+                    <h3 class="text-xl font-semibold text-white">Lic. en Comercio Internacional</h3>
+                    <p class="text-gray-400">Universidad de Luján | 2019 - 2022</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 11-6-11-6z"/>
                     </svg>
-                    <h3 data-i18n="edu2Title" class="text-xl font-semibold text-white">Técnico Químico</h3>
-                    <p data-i18n="edu2Desc" class="text-gray-400">Técnica Luciano Reyes | 1989 - 1995</p>
+                    <h3 class="text-xl font-semibold text-white">Técnico Químico</h3>
+                    <p class="text-gray-400">Técnica Luciano Reyes | 1989 - 1995</p>
                 </div>
             </div>
         </div>
@@ -621,75 +549,75 @@
     <!-- Habilidades -->
     <section id="habilidades" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="habilidadesTitle" class="text-4xl font-bold text-blue-400 mb-6">Habilidades</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Habilidades</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
                     </svg>
-                    <p data-i18n="skill1" class="text-white">Paquete Office</p>
+                    <p class="text-white">Paquete Office</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill2" class="text-white">Python Básico</p>
+                    <p class="text-white">Python Básico</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill3" class="text-white">Google Colab</p>
+                    <p class="text-white">Google Colab</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
                     </svg>
-                    <p data-i18n="skill4" class="text-white">Visual Studio Code</p>
+                    <p class="text-white">Visual Studio Code</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill5" class="text-white">Power BI</p>
+                    <p class="text-white">Power BI</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill6" class="text-white">Canva</p>
+                    <p class="text-white">Canva</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill7" class="text-white">Foguista</p>
+                    <p class="text-white">Foguista</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill8" class="text-white">Operador DeltaV EMERSON</p>
+                    <p class="text-white">Operador DeltaV EMERSON</p>
                 </div>
                 <div class="card text-center">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14h-4v-2h4v2zm4-4h-8v-2h8v2zm0-4h-8v-2h8v2z"/>
                     </svg>
-                    <p data-i18n="skill9" class="text-white">Vibe Coding</p>
+                    <p class="text-white">Vibe Coding</p>
                     <div class="dropdown-container">
-                        <div class="dropdown-toggle" data-i18n="dropdownToggle">Proyectos</div>
+                        <div class="dropdown-toggle">Proyectos</div>
                         <div class="dropdown-menu">
                             <a href="https://nexoar-art.github.io/ROTISERIA-MALVINAS/" target="_blank" class="btn-3d flex items-center justify-center">
                                 <svg class="icon mr-1" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                 </svg>
-                                <span class="text-center w-full" data-i18n="project1">Rotisería</span>
+                                <span class="text-center w-full">Rotisería</span>
                             </a>
-                            <a href="https://nexoar-art.github.io/TALLER-KAESER/" target="_blank" class="btn-3d flex items-center justify-center">
+                            <a href="https://ai.studio/apps/drive/1UsOLdbpYY956clHjic9-OH0qkh-jZfMY" target="_blank" class="btn-3d flex items-center justify-center">
                                 <svg class="icon mr-1" viewBox="0 0 24 24">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                                 </svg>
-                                <span class="text-center w-full" data-i18n="project2">Taller Mecanico</span>
+                                <span class="text-center w-full">AI Studio</span>
                             </a>
                         </div>
                     </div>
@@ -698,7 +626,7 @@
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="skill10" class="text-white">Manipulación de Alimentos</p>
+                    <p class="text-white">Manipulación de Alimentos</p>
                 </div>
             </div>
         </div>
@@ -707,66 +635,79 @@
     <!-- Certificaciones -->
     <section id="certificaciones" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="certificacionesTitle" class="text-4xl font-bold text-blue-400 mb-6">Certificaciones</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Certificaciones</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="cert1" class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
+                    <p class="text-lg text-gray-300">Data Analytics | CoderHouse | 2022</p>
                     <a href="https://drive.google.com/file/d/1l6vE-dfvottpnd0VTNnJAY9IfpdSnPJg/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="certTooltip">Ver certificado</span>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
                     </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="cert2" class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
+                    <p class="text-lg text-gray-300">Data Science | CoderHouse | 2023</p>
                     <a href="https://drive.google.com/file/d/1vkYyO_uz4rypz--DoCgxPrz-zR-KCggj/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="certTooltip">Ver certificado</span>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
                     </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="cert3" class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
+                    <p class="text-lg text-gray-300">Visualización de Datos | Coursera | 2024</p>
                     <a href="https://drive.google.com/file/d/1yd1DbOuXUKI1yLXvl0C5EqaHusQRggny/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="certTooltip">Ver certificado</span>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
                     </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="cert4" class="text-lg text-gray-300">Evaluación de Perfil Laboral</p>
+                    <p class="text-lg text-gray-300">Evaluación de Perfil Laboral</p>
                     <a href="https://drive.google.com/file/d/1_e1aALydAUILvZ9l_-s6nRZ8E67nMrn8/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="cert4">Evaluación de Perfil Laboral</span>
+                        <span class="whatsapp-tooltip">Evaluación de Perfil Laboral</span>
                     </a>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="cert5" class="text-lg text-gray-300">Flujos y herramientas de trabajo con IA</p>
+                    <p class="text-lg text-gray-300">Flujos y herramientas de trabajo con IA</p>
                     <a href="https://drive.google.com/file/d/1LfJC9cLFws3vUiFAO6a6p6UbRXWzCW0v/view?usp=sharing" target="_blank" class="whatsapp-btn mt-4">
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                         </svg>
-                        <span class="whatsapp-tooltip" data-i18n-tooltip="certTooltip">Ver certificado</span>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
+                    </a>
+                </div>
+                <!-- NUEVA TARJETA GOOGLE ADS -->
+                <div class="card">
+                    <svg class="icon mb-2" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                    </svg>
+                    <p class="text-lg text-gray-300">GOOGLE ADS | LinkedIn Learning</p>
+                    <a href="https://www.linkedin.com/learning/certificates/bedba684f7a6c2123bd5c1a2ab659419577fbdd9b03a6532f9c4f5aad92e5386?trk=share_certificate" target="_blank" class="whatsapp-btn mt-4">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                        </svg>
+                        <span class="whatsapp-tooltip">Ver certificado</span>
                     </a>
                 </div>
             </div>
@@ -776,19 +717,19 @@
     <!-- Idiomas -->
     <section id="idiomas" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="idiomasTitle" class="text-4xl font-bold text-blue-400 mb-6">Idiomas</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Idiomas</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="lang1" class="text-lg text-gray-300">Español: Nativo</p>
+                    <p class="text-lg text-gray-300">Español: Nativo</p>
                 </div>
                 <div class="card">
                     <svg class="icon mb-2" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
                     </svg>
-                    <p data-i18n="lang2" class="text-lg text-gray-300">Inglés: Básico</p>
+                    <p class="text-lg text-gray-300">Inglés: Básico</p>
                 </div>
             </div>
         </div>
@@ -797,15 +738,15 @@
     <!-- Contacto -->
     <section id="contacto" class="section bg-[#1c1c1c]">
         <div class="container mx-auto px-4">
-            <h2 data-i18n="contactoTitle" class="text-4xl font-bold text-blue-400 mb-6">Contacto</h2>
+            <h2 class="text-4xl font-bold text-blue-400 mb-6">Contacto</h2>
             <div class="card">
-                <p class="text-lg text-gray-400 mt-4"><span data-i18n="emailLabel">Email:</span> gastonrobertogimenez@gmail.com</p>
-                <p class="text-lg text-gray-400 mt-2"><span data-i18n="linkedinLabel">LinkedIn:</span> <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/gastongimenez</a></p>
+                <p class="text-lg text-gray-400 mt-4">Email: gastonrobertogimenez@gmail.com</p>
+                <p class="text-lg text-gray-400 mt-2">LinkedIn: <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="text-blue-400 hover:underline">linkedin.com/in/gastongimenez</a></p>
                 <a href="https://www.linkedin.com/in/gaston-roberto-gimenez/" target="_blank" class="mt-4 btn-3d">
                     <svg class="icon mr-2" viewBox="0 0 24 24">
                         <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM8 17H6V9h2v8zm6 0h-2v-4h2v4zm2 0h-2v-8h2v8zm-8-9H6V7h2v1z"/>
                     </svg>
-                    <span data-i18n="linkedinBtn">Visitar Perfil de LinkedIn</span>
+                    Visitar Perfil de LinkedIn
                 </a>
             </div>
         </div>
@@ -816,18 +757,18 @@
         <div class="container mx-auto px-4">
             <a id="download-btn-footer" href="https://drive.google.com/file/d/1XOoSzN1lsqVqLIv93Fy3FjpJF9XQVuJn/view?usp=sharing" target="_blank" class="whatsapp-btn">
                 <span>PDF</span>
-                <span class="whatsapp-tooltip" data-i18n-tooltip="downloadFooter">Baja el CV</span>
+                <span class="whatsapp-tooltip">Baja el CV</span>
             </a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-black py-6 text-center text-gray-400">
-        <p data-i18n="footerText">© 2025 Gastón Roberto Giménez. Todos los derechos reservados.</p>
+        <p>© 2025 Gastón Roberto Giménez. Todos los derechos reservados.</p>
         <p class="mt-2">
-            <a href="#" data-i18n="privacy" class="text-blue-400 hover:underline">Política de Privacidad</a> | 
-            <a href="#" data-i18n="cookies" class="text-blue-400 hover:underline">Política de Cookies</a> | 
-            <a href="#" data-i18n="legal" class="text-blue-400 hover:underline">Aviso Legal</a>
+            <a href="#" class="text-blue-400 hover:underline">Política de Privacidad</a> | 
+            <a href="#" class="text-blue-400 hover:underline">Política de Cookies</a> | 
+            <a href="#" class="text-blue-400 hover:underline">Aviso Legal</a>
         </p>
     </footer>
 
@@ -933,182 +874,6 @@
                 if (!dropdown.parentElement.contains(e.target)) {
                     dropdown.classList.remove('active');
                 }
-            });
-        });
-
-        // ===== LANGUAGE TOGGLE FUNCTIONALITY =====
-        const translations = {
-            es: {
-                name: "Gastón Roberto Giménez",
-                title: "Operador de Planta",
-                heroDesc: "Profesional con experiencia en producción industrial, impulsando la eficiencia operativa y la innovación en entornos dinámicos.",
-                whatsappTooltip: "Escríbeme al WhatsApp",
-                linkedinTooltip: "Contáctame por LinkedIn",
-                downloadTooltip: "Descargar CV",
-                resumenTitle: "Resumen Laboral",
-                resumenText: "Más de 15 años de experiencia en producción industrial, trabajando en empresas líderes como Cervecería y Maltería Quilmes, Papelera del Plata (Softly) y Cabot Argentina. En Cabot, como Operador de Planta y Reactores, logré un rendimiento del 98% en la producción de negro de humo mediante controles de calidad y operación eficiente en sistemas DeltaV. Mi enfoque en la productividad, resolución de problemas y adaptabilidad me permite destacar en entornos de alta exigencia.",
-                experienciaTitle: "Experiencia Laboral",
-                job1Title: "KM 74 AUTO SPA - Encargado",
-                job1Desc: "Mantenimiento general (Automotor) - LAVADO, DESINFECCIÓN, ASPIRADO, PULIDO, DETAILING. CLIENTES: (TOYOTA TSUSHO CORPORATION, ASPEN FORD MOTORS, PETROMINIG, PÚBLICO EN GENERAL).",
-                job2Title: "Operador de Planta y Operador de Reactores - Cabot Argentina",
-                job2Desc: "Optimización de procesos productivos, logrando un rendimiento del 92% en la producción de negro de humo mediante controles de calidad y operación eficiente en control distribuido DeltaV.",
-                job3Title: "Operador de Planta - Papelera del Plata (Softly)",
-                job3Desc: "Gestión de líneas de producción, garantizando cumplimiento de normativas y estándares de seguridad.",
-                job4Title: "Operador - Cervecería y Maltería Quilmes",
-                job4Desc: "Operación de maquinaria industrial alimenticia y mantenimiento preventivo, contribuyendo a la continuidad operativa en líneas de transporte en sector envasado.",
-                educacionTitle: "Educación",
-                edu1Title: "Lic. en Comercio Internacional",
-                edu1Desc: "Universidad de Luján | 2019 - 2022",
-                edu2Title: "Técnico Químico",
-                edu2Desc: "Técnica Luciano Reyes | 1989 - 1995",
-                habilidadesTitle: "Habilidades",
-                skill1: "Paquete Office",
-                skill2: "Python Básico",
-                skill3: "Google Colab",
-                skill4: "Visual Studio Code",
-                skill5: "Power BI",
-                skill6: "Canva",
-                skill7: "Foguista",
-                skill8: "Operador DeltaV EMERSON",
-                skill9: "Vibe Coding",
-                skill10: "Manipulación de Alimentos",
-                dropdownToggle: "Proyectos",
-                project1: "Rotisería",
-                project2: "Taller Mecanico",
-                certificacionesTitle: "Certificaciones",
-                cert1: "Data Analytics | CoderHouse | 2022",
-                cert2: "Data Science | CoderHouse | 2023",
-                cert3: "Visualización de Datos | Coursera | 2024",
-                cert4: "Evaluación de Perfil Laboral",
-                cert5: "Flujos y herramientas de trabajo con IA",
-                certTooltip: "Ver certificado",
-                idiomasTitle: "Idiomas",
-                lang1: "Español: Nativo",
-                lang2: "Inglés: Básico",
-                contactoTitle: "Contacto",
-                emailLabel: "Email:",
-                linkedinLabel: "LinkedIn:",
-                linkedinBtn: "Visitar Perfil de LinkedIn",
-                downloadFooter: "Baja el CV",
-                footerText: "© 2025 Gastón Roberto Giménez. Todos los derechos reservados.",
-                privacy: "Política de Privacidad",
-                cookies: "Política de Cookies",
-                legal: "Aviso Legal"
-            },
-            en: {
-                name: "Gastón Roberto Giménez",
-                title: "Plant Operator",
-                heroDesc: "Professional with experience in industrial production, driving operational efficiency and innovation in dynamic environments.",
-                whatsappTooltip: "Message me on WhatsApp",
-                linkedinTooltip: "Contact me on LinkedIn",
-                downloadTooltip: "Download CV",
-                resumenTitle: "Professional Summary",
-                resumenText: "Over 15 years of experience in industrial production, working at leading companies such as Cervecería y Maltería Quilmes, Papelera del Plata (Softly), and Cabot Argentina. At Cabot, as a Plant and Reactors Operator, I achieved 98% performance in carbon black production through quality controls and efficient operation in DeltaV systems. My focus on productivity, problem-solving, and adaptability allows me to excel in high-demand environments.",
-                experienciaTitle: "Work Experience",
-                job1Title: "KM 74 AUTO SPA - Manager",
-                job1Desc: "General maintenance (Automotive) - WASHING, DISINFECTION, VACUUMING, POLISHING, DETAILING. CLIENTS: (TOYOTA TSUSHO CORPORATION, ASPEN FORD MOTORS, PETROMINIG, GENERAL PUBLIC).",
-                job2Title: "Plant Operator and Reactors Operator - Cabot Argentina",
-                job2Desc: "Optimization of production processes, achieving 92% performance in carbon black production through quality controls and efficient operation in DeltaV distributed control systems.",
-                job3Title: "Plant Operator - Papelera del Plata (Softly)",
-                job3Desc: "Management of production lines, ensuring compliance with regulations and safety standards.",
-                job4Title: "Operator - Cervecería y Maltería Quilmes",
-                job4Desc: "Operation of industrial food machinery and preventive maintenance, contributing to operational continuity in transport lines in the packaging sector.",
-                educacionTitle: "Education",
-                edu1Title: "Bachelor's in International Trade",
-                edu1Desc: "Universidad de Luján | 2019 - 2022",
-                edu2Title: "Chemical Technician",
-                edu2Desc: "Técnica Luciano Reyes | 1989 - 1995",
-                habilidadesTitle: "Skills",
-                skill1: "Microsoft Office Suite",
-                skill2: "Python Basics",
-                skill3: "Google Colab",
-                skill4: "Visual Studio Code",
-                skill5: "Power BI",
-                skill6: "Canva",
-                skill7: "Boiler Operator",
-                skill8: "DeltaV EMERSON Operator",
-                skill9: "Vibe Coding",
-                skill10: "Food Handling",
-                dropdownToggle: "Projects",
-                project1: "Rotisserie Shop",
-                project2: "Mechanical Workshop",
-                certificacionesTitle: "Certifications",
-                cert1: "Data Analytics | CoderHouse | 2022",
-                cert2: "Data Science | CoderHouse | 2023",
-                cert3: "Data Visualization | Coursera | 2024",
-                cert4: "Laboral Profile Assessment",
-                cert5: "AI Workflows and Tools",
-                certTooltip: "View certificate",
-                idiomasTitle: "Languages",
-                lang1: "Spanish: Native",
-                lang2: "English: Basic",
-                contactoTitle: "Contact",
-                emailLabel: "Email:",
-                linkedinLabel: "LinkedIn:",
-                linkedinBtn: "Visit LinkedIn Profile",
-                downloadFooter: "Download CV",
-                footerText: "© 2025 Gastón Roberto Giménez. All rights reserved.",
-                privacy: "Privacy Policy",
-                cookies: "Cookie Policy",
-                legal: "Legal Notice"
-            }
-        };
-
-        // Function to update all translatable elements
-        function updateLanguage(lang) {
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-            
-            // Update buttons active state
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-                btn.setAttribute('aria-pressed', btn.dataset.lang === lang);
-            });
-            
-            // Update translatable elements
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.dataset.i18n;
-                if (translations[lang][key]) {
-                    // Preserve HTML if element contains links
-                    if (el.dataset.i18nHtml) {
-                        el.innerHTML = translations[lang][key];
-                    } else {
-                        el.textContent = translations[lang][key];
-                    }
-                }
-            });
-            
-            // Update tooltips
-            document.querySelectorAll('[data-i18n-tooltip]').forEach(el => {
-                const key = el.dataset.i18nTooltip;
-                const tooltip = el.querySelector('.whatsapp-tooltip, .linkedin-tooltip');
-                if (tooltip && translations[lang][key]) {
-                    tooltip.textContent = translations[lang][key];
-                }
-            });
-            
-            // Save preference
-            localStorage.setItem('cv-language', lang);
-            
-            // Optional: Add subtle animation feedback
-            document.body.style.opacity = '0.98';
-            setTimeout(() => { document.body.style.opacity = '1'; }, 150);
-        }
-
-        // Initialize language toggle
-        document.addEventListener('DOMContentLoaded', () => {
-            // Get saved language or default to 'es'
-            const savedLang = localStorage.getItem('cv-language') || 'es';
-            updateLanguage(savedLang);
-            
-            // Add event listeners to language buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    const newLang = e.currentTarget.dataset.lang;
-                    if (newLang !== document.documentElement.lang) {
-                        updateLanguage(newLang);
-                    }
-                });
             });
         });
     </script>
